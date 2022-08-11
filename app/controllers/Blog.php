@@ -12,6 +12,16 @@ class Blog extends Controller {
         $this->view('Templates/footer');
     }
 
+    public function detail($id)
+    {
+        $data['title'] = 'Blog Detail';
+        $data['blog'] = $this->model('Blog_model')->getBlogById($id);
+
+        $this->view('Templates/header', $data);
+        $this->view('Blog/detail', $data);
+        $this->view('Templates/footer');
+    }
+
     public function delete($id)
     {
         if($this->model('Blog_model')->deleteBlog($id) > 0)
@@ -57,10 +67,9 @@ class Blog extends Controller {
     public function update($id)
     {
         $blogData = [
-            'penulis' => $this->model('User_model')->getPenulisById($id),
             'judul' => $_POST['judul'],
             'tulisan' => $_POST['tulisan'],
-            'user_id' => $_POST['id'],
+            'user_id' => $_POST['user_id'],
         ];
 
         if($this->model('Blog_model')->updateBlog($blogData, $id) > 0)

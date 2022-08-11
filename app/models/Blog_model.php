@@ -18,14 +18,14 @@ class Blog_model {
 
     public function getAllBlogAndUser()
     {
-        $query = 'SELECT * FROM ' . $this->table . ' LEFT JOIN user on blog.user_id = user.id';
+        $query = 'SELECT * FROM ' . $this->table . ' LEFT JOIN user on blog.user_id = user.id_user';
         $this->db->query($query);
         return $this->db->resultSet();
     }
 
     public function deleteBlog($id)
     {
-        $query = 'DELETE FROM ' . $this->table . ' WHERE id=:id';
+        $query = 'DELETE FROM ' . $this->table . ' WHERE id_blog=:id';
         $this->db->query($query);
         $this->db->bind('id', $id);
         $this->db->execute();
@@ -45,7 +45,7 @@ class Blog_model {
 
     public function getBlogById($id)
     {
-        $query = 'SELECT * FROM ' . $this->table . ' WHERE id=:id';
+        $query = 'SELECT * FROM ' . $this->table . ' WHERE id_blog=:id';
         $this->db->query($query);
         $this->db->bind('id', $id);
         return $this->db->single();
@@ -53,12 +53,12 @@ class Blog_model {
 
     public function updateBlog($blogData, $id)
     {
-        $query = 'UPDATE ' . $this->table . ' SET penulis=:penulis, judul=:judul, tulisan=:tulisan WHERE id=:id';
+        $query = 'UPDATE ' . $this->table . ' SET judul=:judul, tulisan=:tulisan, user_id=:user_id WHERE id_blog=:id';
         $this->db->query($query);
-        $this->db->bind('penulis', $blogData['penulis']);
-        $this->db->bind('id', $id);
         $this->db->bind('judul', $blogData['judul']);
         $this->db->bind('tulisan', $blogData['tulisan']);
+        $this->db->bind('user_id', $blogData['user_id']);
+        $this->db->bind('id', $id);
         $this->db->execute();
         return $this->db->rowCount();
     }

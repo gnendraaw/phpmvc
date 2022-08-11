@@ -27,11 +27,11 @@
                             <td><?=$blog['judul']?></td>
                             <td><?=$blog['tulisan']?></td>
                             <td>
-                                <!-- <a href="<?=BASE_URL?>/blog/edit/<?=$blog['id']?>" class="btn btn-primary">Edit</a> -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editForm<?=$blog['id']?>">
+                                <a href="<?=BASE_URL?>/blog/detail/<?=$blog['id_blog']?>" class="btn btn-warning">Detail</a>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editForm<?=$blog['id_blog']?>">
                                     Edit
                                 </button>
-                                <a href="<?=BASE_URL?>/blog/delete/<?=$blog['id']?>" class="btn btn-danger" onclick="return confirm('yakin?')">Delete</a>
+                                <a href="<?=BASE_URL?>/blog/delete/<?=$blog['id_blog']?>" class="btn btn-danger" onclick="return confirm('yakin?')">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach?>
@@ -87,20 +87,24 @@
         <form action="<?=BASE_URL?>/blog/update/<?=$blog['id']?>" method="post">
             <div class="mb-3">
                 <label for="penulis" class="form-label">Penulis</label>
-                <input type="text" class="form-control" id="penulis" name="penulis" value="<?=$blog['username']?>">
+                <select name="user_id" id="penulis" class="form-control">
+                    <?php foreach($data['user'] as $user): ?>
+                        <option value="<?=$user['id']?>"><?=$user['username']?></option>
+                    <?php endforeach ?>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="judul" class="form-label">Judul</label>
-                <input type="text" class="form-control" id="judul" name="judul" value="<?=$blog['judul']?>">
+                <input type="text" class="form-control" id="judul" name="judul">
             </div>
             <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="tulisan" style="height: 100px" name="tulisan"><?=$blog['tulisan']?></textarea>
+                <textarea class="form-control" placeholder="Leave a comment here" id="tulisan" style="height: 100px" name="tulisan"></textarea>
                 <label for="tulisan">Tulisan</label>
             </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Edit</button>
+        <button type="submit" class="btn btn-primary">Post</button>
         </form>
       </div>
     </div>

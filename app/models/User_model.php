@@ -17,7 +17,7 @@ class User_model {
 
     public function getUserById($id)
     {
-        $query = 'SELECT * FROM ' . $this->table . ' WHERE id=:id';
+        $query = 'SELECT * FROM ' . $this->table . ' WHERE id_user=:id';
         $this->db->query($query);
         $this->db->bind('id', $id);
         return $this->db->single();
