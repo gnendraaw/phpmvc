@@ -53,7 +53,7 @@
                 <label for="penulis" class="form-label">Penulis</label>
                 <select name="user_id" id="penulis" class="form-control">
                     <?php foreach($data['user'] as $user): ?>
-                        <option value="<?=$user['id']?>"><?=$user['username']?></option>
+                        <option value="<?=$user['id_user']?>"><?=$user['username']?></option>
                     <?php endforeach ?>
                 </select>
             </div>
@@ -76,7 +76,7 @@
 </div>
 
 <?php foreach($data['blog'] as $blog):?>
-    <div class="modal fade" id="editForm<?=$blog['id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editForm<?=$blog['id_blog']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -84,21 +84,21 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="<?=BASE_URL?>/blog/update/<?=$blog['id']?>" method="post">
+        <form action="<?=BASE_URL?>/blog/update/<?=$blog['id_blog']?>" method="post">
             <div class="mb-3">
                 <label for="penulis" class="form-label">Penulis</label>
                 <select name="user_id" id="penulis" class="form-control">
                     <?php foreach($data['user'] as $user): ?>
-                        <option value="<?=$user['id']?>"><?=$user['username']?></option>
+                        <option value="<?=$user['id_user']?>"><?=$user['username']?></option>
                     <?php endforeach ?>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="judul" class="form-label">Judul</label>
-                <input type="text" class="form-control" id="judul" name="judul">
+                <input type="text" class="form-control" id="judul" name="judul" value="<?=$blog['judul']?>">
             </div>
             <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="tulisan" style="height: 100px" name="tulisan"></textarea>
+                <textarea class="form-control" placeholder="Leave a comment here" id="tulisan" style="height: 100px" name="tulisan"><?=$blog['tulisan']?></textarea>
                 <label for="tulisan">Tulisan</label>
             </div>
       </div>
