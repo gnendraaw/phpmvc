@@ -15,4 +15,13 @@ class Blog_model {
         $this->db->query($query);
         return $this->db->resultSet();
     }
+
+    public function deleteBlog($id)
+    {
+        $query = 'DELETE FROM ' . $this->table . ' WHERE id=:id';
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }
