@@ -27,7 +27,7 @@
                             <td><?=$blog['judul']?></td>
                             <td><?=$blog['tulisan']?></td>
                             <td>
-                                <a href="<?=BASE_URL?>/blog/edit/<?=$blog['id']?>" class="btn btn-primary" onclick="return confirm('yakin?')">Edit</a>
+                                <a href="<?=BASE_URL?>/blog/edit/<?=$blog['id']?>" class="btn btn-primary">Edit</a>
                                 <a href="<?=BASE_URL?>/blog/delete/<?=$blog['id']?>" class="btn btn-danger" onclick="return confirm('yakin?')">Delete</a>
                             </td>
                         </tr>

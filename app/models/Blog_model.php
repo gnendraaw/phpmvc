@@ -35,4 +35,24 @@ class Blog_model {
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function getBlogById($id)
+    {
+        $query = 'SELECT * FROM ' . $this->table . ' WHERE id=:id';
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        return $this->db->single();
+    }
+
+    public function updateBlog($blogData, $id)
+    {
+        $query = 'UPDATE ' . $this->table . ' SET penulis=:penulis, judul=:judul, tulisan=:tulisan WHERE id=:id';
+        $this->db->query($query);
+        $this->db->bind('penulis', $blogData['penulis']);
+        $this->db->bind('id', $id);
+        $this->db->bind('judul', $blogData['judul']);
+        $this->db->bind('tulisan', $blogData['tulisan']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }
