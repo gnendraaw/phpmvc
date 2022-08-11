@@ -19,4 +19,24 @@ class Blog extends Controller {
             exit;
         }
     }
+
+    public function create()
+    {
+        $blogData = [
+            'penulis' => $_POST['penulis'],
+            'judul' => $_POST['judul'],
+            'tulisan' => $_POST['tulisan'],
+        ];
+
+        if($this->model('Blog_model')->createBlog($blogData) > 0)
+        {
+            header('Location: ' . BASE_URL . '/blog');
+            exit;
+        }
+        else 
+        {
+            header('Location: ' . BASE_URL . '/blog');
+            exit;
+        }
+    }
 }

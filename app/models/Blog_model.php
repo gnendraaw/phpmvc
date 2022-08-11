@@ -24,4 +24,15 @@ class Blog_model {
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function createBlog($blogData)
+    {
+        $query = 'INSERT INTO ' . $this->table . ' VALUES(NULL, :penulis, :judul, :tulisan)';
+        $this->db->query($query);
+        $this->db->bind('penulis', $blogData['penulis']);
+        $this->db->bind('judul', $blogData['judul']);
+        $this->db->bind('tulisan', $blogData['tulisan']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }
