@@ -16,6 +16,14 @@ class Blog_model {
         return $this->db->resultSet();
     }
 
+    public function getBlogAndUserById($id)
+    {
+        $query = 'SELECT * FROM ' . $this->table . ' LEFT JOIN user on blog.user_id = user.id_user WHERE blog.id_blog = :id';
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        return $this->db->single();
+    }
+
     public function getAllBlogAndUser()
     {
         $query = 'SELECT * FROM ' . $this->table . ' LEFT JOIN user on blog.user_id = user.id_user';

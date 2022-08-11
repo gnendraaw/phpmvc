@@ -15,7 +15,7 @@ class Blog extends Controller {
     public function detail($id)
     {
         $data['title'] = 'Blog Detail';
-        $data['blog'] = $this->model('Blog_model')->getBlogById($id);
+        $data['blog'] = $this->model('Blog_model')->getBlogAndUserById($id);
 
         $this->view('Templates/header', $data);
         $this->view('Blog/detail', $data);
