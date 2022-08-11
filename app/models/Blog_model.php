@@ -16,6 +16,13 @@ class Blog_model {
         return $this->db->resultSet();
     }
 
+    public function getAllBlogAndUser()
+    {
+        $query = 'SELECT * FROM ' . $this->table . ' LEFT JOIN user on blog.user_id = user.id';
+        $this->db->query($query);
+        return $this->db->resultSet();
+    }
+
     public function deleteBlog($id)
     {
         $query = 'DELETE FROM ' . $this->table . ' WHERE id=:id';
@@ -27,9 +34,8 @@ class Blog_model {
 
     public function createBlog($blogData)
     {
-        $query = 'INSERT INTO ' . $this->table . ' VALUES(NULL, :penulis, :judul, :tulisan, :user_id)';
+        $query = 'INSERT INTO ' . $this->table . ' VALUES(NULL, :judul, :tulisan, :user_id)';
         $this->db->query($query);
-        $this->db->bind('penulis', $blogData['penulis']);
         $this->db->bind('judul', $blogData['judul']);
         $this->db->bind('tulisan', $blogData['tulisan']);
         $this->db->bind('user_id', $blogData['user_id']);

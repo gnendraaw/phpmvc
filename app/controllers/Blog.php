@@ -3,7 +3,7 @@
 class Blog extends Controller {
     public function index()
     {
-        $data['blog'] = $this->model('Blog_model')->getAllBlog();
+        $data['blog'] = $this->model('Blog_model')->getAllBlogAndUser();
         $data['user'] = $this->model('User_model')->getAllUser();
         $data['title'] = 'Blog';
 
@@ -26,7 +26,6 @@ class Blog extends Controller {
         $penulisId = $_POST['user_id'];
         $userData = $this->model('User_model')->getUserById($penulisId);
         $blogData = [
-            'penulis' => $userData['username'],
             'judul' => $_POST['judul'],
             'tulisan' => $_POST['tulisan'],
             'user_id' => $penulisId,

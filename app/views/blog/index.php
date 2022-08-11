@@ -23,7 +23,7 @@
                     <?php foreach($data['blog'] as $blog):?>
                         <tr>
                             <td><?=$index++?></td>
-                            <td><?=$blog['penulis']?></td>
+                            <td><?=$blog['username']?></td>
                             <td><?=$blog['judul']?></td>
                             <td><?=$blog['tulisan']?></td>
                             <td>
@@ -87,7 +87,7 @@
         <form action="<?=BASE_URL?>/blog/update/<?=$blog['id']?>" method="post">
             <div class="mb-3">
                 <label for="penulis" class="form-label">Penulis</label>
-                <input type="text" class="form-control" id="penulis" name="penulis" value="<?=$blog['penulis']?>">
+                <input type="text" class="form-control" id="penulis" name="penulis" value="<?=$blog['username']?>">
             </div>
             <div class="mb-3">
                 <label for="judul" class="form-label">Judul</label>
