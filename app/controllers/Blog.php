@@ -4,6 +4,7 @@ class Blog extends Controller {
     public function index()
     {
         $data['blog'] = $this->model('Blog_model')->getAllBlog();
+        $data['user'] = $this->model('User_model')->getAllUser();
         $data['title'] = 'Blog';
 
         $this->view('Templates/header', $data);
@@ -22,10 +23,13 @@ class Blog extends Controller {
 
     public function create()
     {
+        $penulisId = $_POST['user_id'];
+        $userData = $this->model('User_model')->getUserById($penulisId);
         $blogData = [
-            'penulis' => $_POST['penulis'],
+            'penulis' => $userData['username'],
             'judul' => $_POST['judul'],
             'tulisan' => $_POST['tulisan'],
+            'user_id' => $penulisId,
         ];
 
         if($this->model('Blog_model')->createBlog($blogData) > 0)
@@ -54,9 +58,10 @@ class Blog extends Controller {
     public function update($id)
     {
         $blogData = [
-            'penulis' => $_POST['penulis'],
+            'penulis' => $this->model('User_model')->getPenulisById($id),
             'judul' => $_POST['judul'],
             'tulisan' => $_POST['tulisan'],
+            'user_id' => $_POST['id'],
         ];
 
         if($this->model('Blog_model')->updateBlog($blogData, $id) > 0)
