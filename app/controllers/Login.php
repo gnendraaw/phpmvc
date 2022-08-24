@@ -20,6 +20,7 @@ class Login extends Controller {
 
         // encrypt password
         $userData['password'] = md5($userData['password']);
+        $userData['password'] .= SALT;
 
         $user = $this->model('User_model')->getUserViaLogin($userData);
 

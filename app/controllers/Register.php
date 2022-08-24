@@ -26,8 +26,7 @@ class Register extends Controller {
 
         // encrypt password
         $userData['password'] = md5($userData['password']);
-        // $salt = $this->salt(16);
-        // $userData['password'] .= $salt;
+        $userData['password'] .= SALT;
 
         // if userdata successfuly created
         if($this->model('User_model')->addUser($userData) > 0)
