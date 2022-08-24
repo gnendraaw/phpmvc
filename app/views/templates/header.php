@@ -16,21 +16,23 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="<?=BASE_URL?>/home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="<?=BASE_URL?>/blog">Blog</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?=BASE_URL?>/mahasiswa">Mahasiswa</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?=BASE_URL?>/about">About</a>
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+            <div class="row">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?=BASE_URL?>/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="<?=BASE_URL?>/blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=BASE_URL?>/about">About</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <a href="<?=BASE_URL?>/login" class="btn btn-primary">Login</a>
+            </div>
         </div>
     </div>
     </nav>
