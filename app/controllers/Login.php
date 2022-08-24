@@ -18,6 +18,9 @@ class Login extends Controller {
             'password' => $_POST['password'],
         ];
 
+        // encrypt password
+        $userData['password'] = md5($userData['password']);
+
         $user = $this->model('User_model')->getUserViaLogin($userData);
 
         if($user > 0)
